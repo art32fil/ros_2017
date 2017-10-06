@@ -1,0 +1,7 @@
+<launch>
+	<node name="math" pkg="student" type="math" output="screen" required="false"></node>
+  <node name="prog" pkg="student" type="prog" output="screen" required="false"></node>
+  <node name="physics" pkg="student" type="physics" output="screen" required="false"></node>
+  <node name="master" pkg="student" type="master" output="screen" required="true"></node>
+
+</launch>
