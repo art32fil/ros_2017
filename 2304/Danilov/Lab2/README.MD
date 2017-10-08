@@ -3,6 +3,7 @@
 *Patient* is **dying**, can you help?
 Start the **Dying.py** than **Nurse.py** than **Intern.py**
 Enter the parts correctly and he will **survive**, otherwise you are **screwed**.
+If you are too lazy, the **nurse** will notify you and make you *HURRY*.
 
 Example:
 
