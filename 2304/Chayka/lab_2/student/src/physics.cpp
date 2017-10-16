@@ -28,6 +28,7 @@ int main(int argc, char **argv)
   msg.data = "physics";
   while (ros::ok() && passed)
   {
+    ROS_WARN("I'm dying (to fix call physics/pass_the_exam");
     chatter_pub.publish(msg);
     passed = false;
     int border = 10 * (10 + std::rand()%30);
