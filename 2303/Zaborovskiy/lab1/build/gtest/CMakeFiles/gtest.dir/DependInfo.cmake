@@ -17,7 +17,6 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/kvins/ROS/lab1/include"
-  "/opt/ros/kinetic/include"
   "/usr/src/gtest/include"
   "/usr/src/gtest"
   )
