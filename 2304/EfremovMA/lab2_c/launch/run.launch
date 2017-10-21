@@ -1,0 +1,7 @@
+<launch>
+  <node  pkg="lab2_c" type="robot"  name="Dalek_Kaan" output="screen" />
+  <include file="$(find lab2_c)/launch/run_drives.launch" />
+  <node  pkg="lab2_c" type="trickster" name="River_Song" output="screen"/>
+  <node  pkg="lab2_c" type="repair_service" name="Repair_service" output="screen"/>
+  <node  pkg="lab2_c" type="map_service" name="TARDIS" output="screen"/>
+</launch>

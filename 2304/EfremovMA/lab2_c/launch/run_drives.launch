@@ -1,0 +1,26 @@
+<launch>
+  <node pkg="lab2_c" type="drive_unit" name="drive_0" output="screen">
+    <param name="name" type="str" value="left_head" />
+    <param name="id" type="int" value="0" />
+  </node>
+  <node pkg="lab2_c" type="drive_unit" name="drive_1" output="screen">
+    <param name="name" type="str" value="right_head" />
+    <param name="id" type="int" value="1" />
+  </node>
+  <node pkg="lab2_c" type="drive_unit" name="drive_2" output="screen">
+    <param name="name" type="str" value="left_middle" />
+    <param name="id" type="int" value="2" />
+  </node>
+  <node pkg="lab2_c" type="drive_unit" name="drive_3" output="screen">
+    <param name="name" type="str" value="right_middle" />
+    <param name="id" type="int" value="3" />
+  </node>
+  <node pkg="lab2_c" type="drive_unit" name="drive_4" output="screen">
+    <param name="name" type="str" value="left_back" />
+    <param name="id" type="int" value="4" />
+  </node>
+  <node pkg="lab2_c" type="drive_unit" name="drive_5" output="screen">
+    <param name="name" type="str" value="right_back" />
+    <param name="id" type="int" value="5" />
+  </node>
+</launch>
