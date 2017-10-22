@@ -1,0 +1,3 @@
+<launch>
+	<node name="node" pkg="ddos" type="node" />
+</launch>
