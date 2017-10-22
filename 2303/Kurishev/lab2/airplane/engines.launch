@@ -1,0 +1,7 @@
+<launch>
+        <node name="engine1" pkg="airplane" output="screen" type="engine1" />
+	<node name="engine2" pkg="airplane" output="screen" type="engine2" />
+	<node name="engine3" pkg="airplane" output="screen" type="engine3" />
+	<node name="engine4" pkg="airplane" output="screen" type="engine4" />
+	<node name="engine5" pkg="airplane" output="screen" type="engine5" />
+</launch>

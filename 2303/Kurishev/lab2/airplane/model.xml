@@ -1,0 +1,159 @@
+
+<robot name="airplane">
+
+<link name="base_body">
+ 
+  <visual>
+     <origin xyz="0 0 0" rpy="0 1.57 0" />  
+    <geometry>
+      <cylinder radius="0.2" length="0.6" />
+    </geometry>
+    <material name="gray">
+      <color rgba=".2 .2 .2 1" />
+    </material>
+  </visual>
+</link>
+
+
+<link name="head">
+  <visual>
+    <geometry>
+      <sphere radius=".2" />
+    </geometry>
+   <material name="white">
+      <color rgba="1 1 0 1"/>
+    </material>
+  </visual>
+</link>
+
+<joint name="airhead" type="fixed">
+  <origin xyz="0.3 0 0" />
+  <parent link="base_body"/>
+  <child link="head"/>
+</joint>
+
+
+
+<link name="engine1">
+  <visual>
+    <geometry>
+      <sphere radius=".07" />
+    </geometry>
+   <material name="white">
+      <color rgba="1 1 0 1"/>
+    </material>
+  </visual>
+</link>
+
+<joint name="backengine" type="fixed">
+  <origin xyz="-0.3 0 0" />
+  <parent link="base_body"/>
+  <child link="engine1"/>
+</joint>
+
+
+<link name="engine2">
+  <visual>
+    <geometry>
+      <sphere radius=".05" />
+    </geometry>
+   <material name="white">
+      <color rgba="1 1 0 1"/>
+    </material>
+  </visual>
+</link>
+
+<joint name="engine2joint" type="fixed">
+  <origin xyz="0 0.05 -0.2" />
+  <parent link="wing1"/>
+  <child link="engine2"/>
+</joint>
+
+<link name="engine3">
+  <visual>
+    <geometry>
+      <sphere radius=".05" />
+    </geometry>
+   <material name="white">
+      <color rgba="1 1 0 1"/>
+    </material>
+  </visual>
+</link>
+
+<joint name="engine3joint" type="fixed">
+  <origin xyz="0 -0.08 -0.2" />
+  <parent link="wing1"/>
+  <child link="engine3"/>
+</joint>
+
+<link name="engine4">
+  <visual>
+    <geometry>
+      <sphere radius=".05" />
+    </geometry>
+   <material name="white">
+      <color rgba="1 1 0 1"/>
+    </material>
+  </visual>
+</link>
+
+<joint name="engine4joint" type="fixed">
+  <origin xyz="0 0.08 -0.2" />
+  <parent link="wing2"/>
+  <child link="engine4"/>
+</joint>
+
+<link name="engine5">
+  <visual>
+    <geometry>
+      <sphere radius=".05" />
+    </geometry>
+   <material name="white">
+      <color rgba="1 1 0 1"/>
+    </material>
+  </visual>
+</link>
+
+<joint name="engine5joint" type="fixed">
+  <origin xyz="0 -0.05 -0.2" />
+  <parent link="wing2"/>
+  <child link="engine5"/>
+</joint>
+
+<link name="wing1">
+  <visual>
+    <geometry>
+      <box size=".1 .30 .4" />
+    </geometry>
+    <material name="white">
+      <color rgba="1 0 1 1"/>
+    </material>
+  </visual>
+</link>
+
+<joint name="wing1connect" type="fixed">
+  <origin xyz="0 -0.15 0" rpy = "0 1.57 0.75"/>
+  <parent link="base_body"/>
+  <child link="wing1"/>
+</joint>
+
+
+<link name="wing2">
+  <visual>
+    <geometry>
+      <box size=".1 .30 .4" />
+    </geometry>
+    <material name="white">
+      <color rgba="1 0 1 1"/>
+    </material>
+  </visual>
+</link>
+
+<joint name="wing2connect" type="fixed">
+  <origin xyz="0 0.15 0" rpy = "0 1.57 -0.75"/>
+  <parent link="base_body"/>
+  <child link="wing2"/>
+</joint>
+
+
+</robot>

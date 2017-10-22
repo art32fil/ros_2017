@@ -1,0 +1,5 @@
+char repairCode
+---
+bool isSuccess
+string detail
+int32 countRepairedDetails
