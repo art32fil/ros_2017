@@ -4,8 +4,8 @@
 #include <time.h>
 
 int total = 0;
-std::vector<int> diff({0, 10, 25, 50});
-std::vector<int> rate({10, 10, 25, 50});
+std::vector<int> diff({0, 3, 10, 20});
+std::vector<int> rate({1000, 800, 700, 600});
 std::vector<int> devCount({3, 4, 5, 6});
 std::vector<std::string> difficulties({"nooby", "normal", "hard", "nightmare"});
 
@@ -17,7 +17,7 @@ std::vector<std::string> firewalls({ "OpenWrt", "DD-WRT", "LEDE", "Roofnet", "RO
 std::vector<std::string> activity({"play DOTA2", "read a book", "drink tea", "surf net", "go for a walk", "take a shower", "do 10 push-ups", "do 10 squats", "call mom", "draw a picture", "read sources", "fill in calendar"});
 
 int getDiff() {
-	for (int i = 0; i < diff.size(); i++) {
+	for (int i = diff.size() - 1; i >= 0; i--) {
 		if (total >= diff[i]) {
 			return i;
 		}
@@ -40,25 +40,12 @@ struct part {
 	int firewall;
 	//diff: 3
 	int revision;
-	static part gen() {
-		part res;
-		res.isOk = true;
-		res.type = rand() % types.size();
-		res.firewall = rand() % firewalls.size();
-		res.partnumber = 0;
-		if (res.type == 0) {
-			res.partnumber = rand() % routers.size();
-		}
-		else if (res.type == 1) {
-			res.partnumber = rand() % switches.size();
-		}
-		else if (res.type == 2) {
-			res.partnumber = rand() % wireless.size();
-		}
-		res.revision = rand() % 10;
-	}
 	std::string str() {
-		std::string res = types[this->type] + " ";
+		std::string res = "";
+		if (!isOk) {
+			res += "(broken) ";
+		}
+		res += types[this->type] + " ";
 		if (getDiff() > 0) {
 			if (this->type == 0) {
 				res += routers[this->partnumber];
@@ -95,6 +82,25 @@ struct part {
 		return firewalls[firewall];
 	}
 };
+
+part gen() {
+	part res;
+	res.isOk = true;
+	res.type = rand() % types.size();
+	res.firewall = rand() % firewalls.size();
+	res.partnumber = 0;
+	if (res.type == 0) {
+		res.partnumber = rand() % routers.size();
+	}
+	else if (res.type == 1) {
+		res.partnumber = rand() % switches.size();
+	}
+	else if (res.type == 2) {
+		res.partnumber = rand() % wireless.size();
+	}
+	res.revision = rand() % 10;
+	return res;
+}
 std::vector<part> devices;
 
 bool fixPart(ddos::msgs::Request &req, ddos::msgs::Response &resp) {
@@ -107,15 +113,15 @@ bool fixPart(ddos::msgs::Request &req, ddos::msgs::Response &resp) {
 		bool nameok = (strcmp(devices[i].getName().c_str(), name.c_str()) == 0 || (getDiff() < 1));
 		bool firewallok = (strcmp(devices[i].getFirewall().c_str(), firewall.c_str()) == 0 || (getDiff() < 2));
 		bool revisionok = (devices[i].revision == revision || (getDiff() < 3));
-		if (typeok && nameok && firewallok && revisionok) {
+		if (!devices[i].isOk && typeok && nameok && firewallok && revisionok) {
+			devices[i].isOk = true;
 			resp.result = "Ok, you fixed it!";
+			total++;
 			return true;
 		}
-		else {
-			resp.result = "No, wrong device";
-			return false;
-		}
 	}
+	resp.result = "No, wrong device";
+	return false;
 }
 
 int countBroken() {
@@ -160,9 +166,9 @@ void showCurrentState() {
 
 void checkDiff() {
 	if (devices.size() < devCount[getDiff()]) {
-		part p = part::gen();
+		part p = gen();
 		devices.push_back(p);
-		std::cout << "You have a new device! Weeehaaaa!" << std::endl;
+		std::cout << "You have a new device! Weeehaaaa! It is: " << p.str() << std::endl;
 	}
 }
 
@@ -183,7 +189,7 @@ int main(int argc, char **argv)
 		"3. You will lose only if you have all your devices broken.\n";
 	ros::Duration(15).sleep();
 
-	ros::Rate loop_rate(0.2);
+	ros::Rate loop_rate(1);
 
 	while (ros::ok()) {
 		checkDiff();
@@ -194,7 +200,7 @@ int main(int argc, char **argv)
 		showCurrentState();
 		if (countAlive() == 0 && countBroken() > 2) {
 			std::cout << "Hackers broke into your system and now you are fired! Sorry, it was a nice job.\n" << 
-				"Level: " << getDiff() << "(" << difficulties[getDiff()] << "), total score: " << total << std::endl;
+				"Level: " << getDiff() << " (" << difficulties[getDiff()] << "), total score: " << total << std::endl;
 			ros::shutdown();
 		}
 		ros::spinOnce();
