@@ -2,25 +2,25 @@
 #include <vector>
 #include <algorithm>
 
-enum  details {
-    wing_1,
-    wing_2,
-    fuselage,
-    chassis,
-    tail,
-    pilot
+char* details[] {
+    "wing_1",
+    "wing_2",
+    "fuselage",
+    "chassis",
+    "tail",
+    "pilot"
 };
 
 class Plain {
 private:
     int critical_condition;
-    std::vector<details> broke_details;
+    std::vector<char*> broke_details;
 
 public:
     Plain();
-    std::vector<details> getBrokeDetails() { return broke_details; }
-    bool destroyDetail(details detail);
-    bool repairDetail(details detail);
+    std::vector<char*> getBrokeDetails() { return broke_details; }
+    bool destroyDetail(char* detail);
+    bool repairDetail(char* detail);
     bool checkCriticalCondition();
 };
 
@@ -28,12 +28,8 @@ Plain::Plain() : critical_condition(3) {
 
 }
 
-// std::vector<details> getBrokeDetails() {
-//     return broke_details;
-// }
-
-bool Plain::destroyDetail(details detail) {
-    std::vector<details>::iterator it;
+bool Plain::destroyDetail(char* detail) {
+    std::vector<char*>::iterator it;
     it = find(broke_details.begin(), broke_details.end(), detail);
 
     if (it == broke_details.end()) {
@@ -45,8 +41,8 @@ bool Plain::destroyDetail(details detail) {
     return false;
 }
 
-bool Plain::repairDetail(details detail) {
-    std::vector<details>::iterator it;
+bool Plain::repairDetail(char* detail) {
+    std::vector<char*>::iterator it;
     it = find(broke_details.begin(), broke_details.end(), detail);
 
     if (it != broke_details.end()) {

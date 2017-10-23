@@ -1,33 +1,15 @@
 #include "ros/ros.h"
-#include "handyman/AddTwoInts.h"
 #include "handyman/Repair.h"
 
 #include "handyman/plain.h"
 #include <time.h>
 
-details faultGeneration() {
-    details brokenDetail;
-
-    srand( time(0));
+int faultGeneration() {
+    srand(time(0));
 
     int randomDetail = rand() % 6;
-
-    switch (randomDetail) {
-    case 0: brokenDetail = wing_1;
-        break;
-    case 1: brokenDetail = wing_2;
-        break;
-    case 2: brokenDetail = fuselage;
-        break;
-    case 3: brokenDetail = chassis;
-        break;
-    case 4: brokenDetail = tail;
-        break;
-    case 5: brokenDetail = pilot;
-        break;
-    }
-    
-    return brokenDetail;
+  
+    return randomDetail;
 }
 
 int main(int argc, char **argv) {
@@ -41,32 +23,38 @@ int main(int argc, char **argv) {
 
     handyman::Repair srv;
 
-    ros::Rate loop_rate(10);
+    ROS_INFO("Ready to receive error messages");
 
-    ROS_INFO("RDY");
+    int brokenDetail;
 
-    details brokenDetail;
+    //delay to destroy
+    int delay = 8;
+
     while (ros::ok()) {
         if (!plain.checkCriticalCondition()) {
-            ROS_INFO("Plain destoyed");
+            ROS_INFO("The plane collapsed");
             return 0;
         }
 
-        ROS_INFO("SIZE = %u", plain.getBrokeDetails().size());
         brokenDetail = faultGeneration();
 
-        if (plain.destroyDetail(brokenDetail)) {
+        if (plain.destroyDetail(details[brokenDetail])) {
+            ROS_INFO("Detail %s has broken", details[brokenDetail]);
+
             srv.request.codeDetail = brokenDetail;
 
             if (client.call(srv)) {
-                ROS_INFO("Response %d", srv.response.isRepair);
+                if (srv.response.isRepair) {
+                    ROS_INFO("Master repaired the %s", details[brokenDetail]);
+                    plain.repairDetail(details[brokenDetail]);
+                }
             }
 
-            ROS_INFO("faultDetail: %d", brokenDetail);
-            ros::Duration(3).sleep();
+            ros::Duration(delay).sleep();
+
+            ROS_INFO("Number of destroyed details: %d", plain.getBrokeDetails().size());
         }
     }
-
 
     ros::spinOnce();
     return 0;
