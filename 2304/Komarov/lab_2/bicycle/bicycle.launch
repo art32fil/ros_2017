@@ -1,0 +1,4 @@
+<launch>
+	<node name="repair_client" pkg="bicycle" type="repair_client" output="screen" required="false"></node>
+  	<node name="repair_server" pkg="bicycle" type="repair_server" output="screen" required="true"></node>
+</launch>
