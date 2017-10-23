@@ -15,21 +15,24 @@ int main(int argc, char **argv)
   while (countRepairedDetails < 10) {
       int detailCode;
       std::cin >> detailCode;
-      srv.request.repairCode = detailCode;
+      if(detailCode >=0 && detailCode <=4){
+          srv.request.repairCode = detailCode;
 
-      if (client.call(srv)) {
-          if (srv.response.isSuccess == true){
-              countRepairedDetails = srv.response.countRepairedDetails;
-              ROS_INFO("Detail %s repaired", srv.response.detail.c_str());
+          if (client.call(srv)) {
+              if (srv.response.isSuccess == true){
+                  countRepairedDetails = srv.response.countRepairedDetails;
+                  ROS_INFO("Detail %s repaired", srv.response.detail.c_str());
+              }
+              else
+                  ROS_INFO("Error, bad request");
           }
-          else
-              ROS_INFO("Error");
+          else {
+              ROS_ERROR("ERROR");
+              return 1;
+          }
       }
-      else {
-          ROS_ERROR(
-              "ERROR");
-          return 1;
-      }
+      else
+          ROS_INFO("Error, not found detail");
       ros::spinOnce();
 }
 

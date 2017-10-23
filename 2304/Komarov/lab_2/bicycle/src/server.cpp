@@ -40,6 +40,12 @@ bool callback(bicycle::Repair::Request  &req,
          bicycle::Repair::Response &res)
 {
     if (req.repairCode >= 0 && req.repairCode < detailscount) {
+        if(details[req.repairCode] == false)
+        {
+            ROS_INFO("Error, detail not crushed");
+            res.isSuccess = false;
+            return true;
+        }
         details[req.repairCode] = false;
         countSuccesFixedDetails++;
         res.isSuccess = true;
@@ -48,6 +54,7 @@ bool callback(bicycle::Repair::Request  &req,
         ROS_INFO("%s repaired", detailsNames[req.repairCode]);
     }
     else {
+        ROS_INFO("Error");
         res.isSuccess = false;
     }
     return true;
@@ -82,8 +89,6 @@ int main(int argc, char **argv)
     ROS_INFO("YOU WIN");
   else
     ROS_INFO("Game over. Your repairs count: %d", countSuccesFixedDetails);
-
-  ros::spin();
 
   return 0;
 }
