@@ -184,7 +184,7 @@ int main(int argc, char **argv)
 		"Game has different difficulty, so don't go away early :)\n" <<
 		"We will start in about 15 seconds, get ready:\n" <<
 		"1. Open another terminal, type in the following line and double press tab:\n" <<
-		"rosservice call update_firmware {\n" <<
+		"rosservice call /update_firmware \n" <<
 		"2. You will need to specify parameters according to the given problems in network.\n" <<
 		"3. You will lose only if you have all your devices broken.\n";
 	ros::Duration(15).sleep();
