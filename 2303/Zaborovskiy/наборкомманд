@@ -1,0 +1,15 @@
+echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+
+source /opt/ros/kinetic/setup.bash
+
+
+
+roscreate-pkg lab std_msgs rospy
+
+mkdir nodes
+touch nodes/talker.py
+
+roscore
+rosrun lab1 input.py
+
