@@ -1,0 +1,8 @@
+int32 x
+int32 y
+---
+int8  west
+int8  east
+int8  north
+int8  south
+int8  current

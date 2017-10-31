@@ -1,0 +1,4 @@
+<launch>
+  <node name="Meetbag" pkg="lab2" type="Processor.py" output="screen"/>
+  <node name="Computer" pkg="lab2" type="DeepThought.py" />
+</launch>
