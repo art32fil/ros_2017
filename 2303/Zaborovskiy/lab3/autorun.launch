@@ -1,0 +1,11 @@
+<launch>
+<!-- set up the cosys -->
+ <node pkg="tf" type="static_transform_publisher" name="neck" 
+    args="0.0 0.0 0.0 0.0 0.0 0.0 neck my_frame 100" />
+
+<!-- start rviz -->
+  <node pkg="rviz" type="rviz" name="my_rviz" 
+    args="-d $(find lab3)/src/level.rviz -f neck"/>
+
+  <node name="Player1" pkg="lab3" type="input.py" output="screen"/>
+</launch>

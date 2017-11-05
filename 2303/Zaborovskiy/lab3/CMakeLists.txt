@@ -106,7 +106,7 @@ catkin_package(
 #  LIBRARIES lab3
 #  CATKIN_DEPENDS rospy std_msgs
 #  DEPENDS system_lib
-   CATKIN_DEPENDS message_runtime message_generation rospy std_msgs
+   CATKIN_DEPENDS message_runtime rospy std_msgs
 )
 
 ###########
