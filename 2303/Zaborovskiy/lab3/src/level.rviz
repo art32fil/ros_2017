@@ -8,6 +8,8 @@ Panels:
         - /Status1
         - /Player1
         - /Bot1
+        - /Bot2
+        - /Bot3
       Splitter Ratio: 0.5
     Tree Height: 463
   - Class: rviz/Selection
@@ -52,15 +54,31 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: player1
+      Marker Topic: robot1
       Name: Player
       Namespaces:
-        "": true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: bot
+      Marker Topic: robot2
+      Name: Bot
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot3
+      Name: Bot
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot4
       Name: Bot
       Namespaces:
         {}
@@ -69,7 +87,7 @@ Visualization Manager:
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: neck
+    Fixed Frame: map
     Frame Rate: 30
   Name: root
   Tools:

@@ -3,16 +3,20 @@ import rospy
 from visualization_msgs.msg import Marker
 
 class Robot:
-    def physic(self):
-        self.position[0] += self.speed[0]
-        self.position[1] += self.speed[1]
+    def move(self, x, y):
+        self.acceleration[0] = x
+        self.acceleration[1] = y
+
+    def physic(self, delta_time):
+        self.position[0] += self.acceleration[0] * self.speed * delta_time
+        self.position[1] += self.acceleration[1] * self.speed * delta_time
 
     def ros(self):
         marker = Marker()
-        marker.header.frame_id = "/neck"
-        marker.type = marker.SPHERE
+        marker.header.frame_id = self.id
+        marker.type = marker.CYLINDER
         marker.action = marker.ADD
-        marker.scale.x = 0.2
+        marker.scale.x = 0.5
         marker.scale.y = 0.2
         marker.scale.z = 0.2
         marker.color.a = 1.0
@@ -25,16 +29,17 @@ class Robot:
         marker.pose.position.z = 0
         self.publisher.publish(marker)
 
-    def update(self):
-        self.physic();
+    def update(self, delta_time):
+        self.physic(delta_time);
         self.ros();
 
-    def __init__(self, id, color):
+    def __init__(self, id, color, speed, pos):
         self.id = id
         self.color = color
-        self.speed = [0, 0]
-        self.position = [0, 0]
+        self.speed = speed
+        self.acceleration = [0, 0]
+        self.position = pos
         self.publisher = rospy.Publisher(self.id, Marker, queue_size=10)
         self.ros()
 
-    def __call__(self): return self.update()
+    def __call__(self, delta_time): return self.update(delta_time)
