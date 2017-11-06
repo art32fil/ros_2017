@@ -1,11 +1,18 @@
 <launch>
 <!-- set up the cosys -->
- <node pkg="tf" type="static_transform_publisher" name="neck" 
-    args="0.0 0.0 0.0 0.0 0.0 0.0 neck my_frame 100" />
+ <node pkg="tf" type="static_transform_publisher" name="tfrobot1" 
+    args="0.0 0.0 0.0 0.0 0.0 0.0 map robot1 100" />
+ <node pkg="tf" type="static_transform_publisher" name="tfrobot2" 
+    args="0.0 0.0 0.0 0.0 0.0 0.0 map robot2 100" />
+ <node pkg="tf" type="static_transform_publisher" name="tfrobot3" 
+    args="0.0 0.0 0.0 0.0 0.0 0.0 map robot3 100" />
+ <node pkg="tf" type="static_transform_publisher" name="tfrobot4" 
+    args="0.0 0.0 0.0 0.0 0.0 0.0 map robot4 100" />
 
 <!-- start rviz -->
   <node pkg="rviz" type="rviz" name="my_rviz" 
-    args="-d $(find lab3)/src/level.rviz -f neck"/>
+    args="-d $(find lab3)/src/level.rviz -f map"/>
 
-  <node name="Player1" pkg="lab3" type="input.py" output="screen"/>
+  <node name="input" pkg="lab3" type="input.py" output="screen"/>
+  <node name="server" pkg="lab3" type="server.py" output="screen"/>
 </launch>
