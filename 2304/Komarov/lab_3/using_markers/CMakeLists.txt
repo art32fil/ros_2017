@@ -11,7 +11,10 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   tf
   visualization_msgs
+  std_srvs
+  turtlesim
 )
+find_package(Curses REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -135,7 +138,13 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/using_markers_node.cpp)
 add_executable(basic_shapes src/basic_shapes.cpp)
+add_executable(robot src/robot.cpp)
+add_executable(keys src/keys.cpp)
+
 target_link_libraries(basic_shapes ${catkin_LIBRARIES})
+target_link_libraries(robot ${catkin_LIBRARIES} )
+target_link_libraries(keys ${catkin_LIBRARIES} ${CURSES_LIBRARIES} )
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use

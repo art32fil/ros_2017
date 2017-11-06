@@ -1,0 +1,12 @@
+<launch>
+	  <node name="PlayerA" pkg="using_markers" type="robot" output="screen" required="true">
+			<param name="name" type="str" value="A" />
+			<remap from="pose" to="poseA"/>
+		</node>
+		<node name="PlayerB" pkg="using_markers" type="robot" output="screen" required="true">
+			<param name="name" type="str" value="B" />
+			<remap from="pose" to="poseB"/>
+		</node>
+		<node name="basic_shapes" pkg="using_markers" type="basic_shapes" output="screen" required="true"></node>		
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find using_markers)/rviz.rviz"/>
+</launch>
