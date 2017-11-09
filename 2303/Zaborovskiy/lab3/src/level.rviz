@@ -26,6 +26,10 @@ Panels:
         - /hand14
         - /hand15
         - /hand16
+        - /damage1
+        - /damage2
+        - /damage3
+        - /damage4
       Splitter Ratio: 0.5
     Tree Height: 463
   - Class: rviz/Selection
@@ -228,6 +232,52 @@ Visualization Manager:
         {}
       Queue Size: 100
       Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot0_damage
+      Name: damage
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot1_damage
+      Name: damage
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot2_damage
+      Name: damage
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot3_damage
+      Name: damage
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        {}
+      Update Interval: 0
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -261,7 +311,7 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Scale: 23.6407833
+      Scale: 26.0618458
       Target Frame: <Fixed Frame>
       Value: TopDownOrtho (rviz)
       X: 0

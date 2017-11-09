@@ -60,14 +60,19 @@ class Robot:
 
 
     def update(self, delta_time):
-        self.physic(delta_time);
-        self.ros();
+        if self.isLife:
+            self.physic(delta_time);
+            self.ros();
 
-        for v in self.hands:
-            v(delta_time)
+            for v in self.hands:
+                v(delta_time)
+
+    def destroy(self):
+        self.isLife = False
 
     def __init__(self, id, color, speed, pos):
         self.id = id
+        self.isLife = True
         self.color = color
         self.speed = speed
         self.acceleration = [0, 0]
