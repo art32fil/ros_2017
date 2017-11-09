@@ -10,6 +10,22 @@ Panels:
         - /Bot1
         - /Bot2
         - /Bot3
+        - /hand1
+        - /hand2
+        - /hand3
+        - /hand4
+        - /hand5
+        - /hand6
+        - /hand7
+        - /hand8
+        - /hand9
+        - /hand10
+        - /hand11
+        - /hand12
+        - /hand13
+        - /hand14
+        - /hand15
+        - /hand16
       Splitter Ratio: 0.5
     Tree Height: 463
   - Class: rviz/Selection
@@ -54,7 +70,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: robot1
+      Marker Topic: robot0
       Name: Player
       Namespaces:
         {}
@@ -62,7 +78,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: robot2
+      Marker Topic: robot1
       Name: Bot
       Namespaces:
         {}
@@ -78,8 +94,136 @@ Visualization Manager:
       Value: true
     - Class: rviz/Marker
       Enabled: true
-      Marker Topic: robot4
+      Marker Topic: robot2
       Name: Bot
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot0_hand0
+      Name: hand
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot0_hand1
+      Name: hand
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot0_hand2
+      Name: hand
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot0_hand3
+      Name: hand
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot2_hand0
+      Name: hand
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot2_hand1
+      Name: hand
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot2_hand2
+      Name: hand
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot2_hand3
+      Name: hand
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot3_hand0
+      Name: hand
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot3_hand1
+      Name: hand
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot3_hand2
+      Name: hand
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot3_hand3
+      Name: hand
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot1_hand0
+      Name: hand
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot1_hand1
+      Name: hand
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot1_hand2
+      Name: hand
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: robot1_hand3
+      Name: hand
       Namespaces:
         {}
       Queue Size: 100

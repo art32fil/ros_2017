@@ -9,7 +9,6 @@ end = False
 
 
 def new_input(data):
-    print (data.data)
     if data.data != "e":
         arr = data.data.split()
         id = arr[0]
@@ -25,10 +24,10 @@ def server():
     rospy.init_node('server')
     last_update = rospy.Time.now().to_sec()
 
-    robots["robot1"] = Robot("robot1", [0, 1, 0], 100, [4, 0])
-    robots["robot2"] = Robot("robot2", [1, 0, 0], 100, [-4, 0])
-    robots["robot3"] = Robot("robot3", [1, 0, 0], 100, [0, 4])
-    robots["robot4"] = Robot("robot4", [1, 0, 0], 100, [0, -4])
+    robots["robot0"] = Robot("robot0", [0, 1, 0], 100, [4, 0])
+    robots["robot1"] = Robot("robot1", [1, 0, 0], 100, [-4, 0])
+    robots["robot2"] = Robot("robot2", [1, 0, 0], 100, [0, 4])
+    robots["robot3"] = Robot("robot3", [1, 0, 0], 100, [0, -4])
 
     rospy.Subscriber('inputs', String, new_input)
 

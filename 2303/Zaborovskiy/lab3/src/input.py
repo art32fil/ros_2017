@@ -3,7 +3,7 @@ import rospy
 from getch import _Getch
 from std_msgs.msg import String
 
-id = "robot1"
+id = "robot0"
 publisher = ""
 getch = _Getch()
 end = False

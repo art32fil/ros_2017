@@ -1,13 +1,6 @@
 <launch>
 <!-- set up the cosys -->
- <node pkg="tf" type="static_transform_publisher" name="tfrobot1" 
-    args="0.0 0.0 0.0 0.0 0.0 0.0 map robot1 100" />
- <node pkg="tf" type="static_transform_publisher" name="tfrobot2" 
-    args="0.0 0.0 0.0 0.0 0.0 0.0 map robot2 100" />
- <node pkg="tf" type="static_transform_publisher" name="tfrobot3" 
-    args="0.0 0.0 0.0 0.0 0.0 0.0 map robot3 100" />
- <node pkg="tf" type="static_transform_publisher" name="tfrobot4" 
-    args="0.0 0.0 0.0 0.0 0.0 0.0 map robot4 100" />
+
 
 <!-- start rviz -->
   <node pkg="rviz" type="rviz" name="my_rviz" 
