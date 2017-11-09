@@ -24,19 +24,15 @@ def server():
     rospy.init_node('server')
     last_update = rospy.Time.now().to_sec()
 
-    robots["robot0"] = Robot("robot0", [0, 1, 0], 100, [4, 0])
-    robots["robot1"] = Robot("robot1", [1, 0, 0], 100, [-4, 0])
-    robots["robot2"] = Robot("robot2", [1, 0, 0], 100, [0, 4])
-    robots["robot3"] = Robot("robot3", [1, 0, 0], 100, [0, -4])
+    robots["robot0"] = Robot("robot0", [0, 1, 0], 222, [4, 0])
+    robots["robot1"] = Robot("robot1", [1, 0, 0], 222, [-4, 0])
+    robots["robot2"] = Robot("robot2", [1, 0, 0], 222, [0, 4])
+    robots["robot3"] = Robot("robot3", [1, 0, 0], 222, [0, -4])
 
     rospy.Subscriber('inputs', String, new_input)
 
     while not (rospy.is_shutdown() or end):
         delta_time = rospy.Time.now().to_sec() - last_update
-        #print (delta_time)
-
-        #player(delta_time)
-        #bot(delta_time)
 
         for k, v in robots.items():
             v(delta_time)

@@ -14,8 +14,8 @@ class Robot:
         self.acceleration[1] = y
 
     def physic(self, delta_time):
+        self.rotation -= self.acceleration[0] * self.speed * delta_time
 
-        self.rotation -= self.acceleration[0] * self.speed * 50 * delta_time
         if self.rotation > 360:
             self.rotation -= 360
 
@@ -24,8 +24,8 @@ class Robot:
 
         force = self.acceleration[1] * self.speed * delta_time
 
-        self.position[0] += math.cos(self.rotation) * force - math.sin(self.rotation) * force
-        self.position[1] += math.sin(self.rotation) * force + math.cos(self.rotation) * force
+        self.position[0] += math.cos(self.rotation) * force
+        self.position[1] += math.sin(self.rotation) * force
 
         self.acceleration[0] = 0
         self.acceleration[1] = 0
@@ -50,7 +50,7 @@ class Robot:
         marker.pose.position.z = 0
         self.publisher.publish(marker)
 
-        quaternion = tf.transformations.quaternion_from_euler(0, 0, math.radians(self.rotation))
+        quaternion = tf.transformations.quaternion_from_euler(0, 0, self.rotation)
         br = tf.TransformBroadcaster()
         br.sendTransform((self.position[0], self.position[1], 0),
                          quaternion,
@@ -88,7 +88,7 @@ class Robot:
                 parent = self.id
                 position = (0.4, 0, 0)
 
-            hand = Hand(me, parent, position, HAND_LENGTH, [1,1,1], 2 * i)
+            hand = Hand(me, parent, position, HAND_LENGTH, [1,1,1], 10 * i * i * i)
             self.hands.append(hand)
 
             i += 1
