@@ -6,7 +6,7 @@ from hand import Hand
 from visualization_msgs.msg import Marker
 
 HANDS_COUNT = 3
-HAND_LENGTH = 1
+HAND_LENGTH = [1,0.1,0.1]
 
 class Robot:
     def move(self, x, y):
@@ -86,16 +86,21 @@ class Robot:
         while i < HANDS_COUNT + 1:
             me = self.id + "_hand" + str(i)
 
-            position = (HAND_LENGTH, 0, 0)
+            position = (HAND_LENGTH[0], 0, 0)
             parent = self.id + "_hand" + str(i - 1)
 
             if i == 0 :
                 parent = self.id
                 position = (0.4, 0, 0)
 
-            hand = Hand(me, parent, position, HAND_LENGTH, [1,1,1], 10 * i * i * i)
+            hand = Hand(me, Marker.CYLINDER, parent, position, HAND_LENGTH, [1,1,1], 10 * i * i * i)
             self.hands.append(hand)
-
             i += 1
+
+        position = (1, 0, 0)
+        parent = self.id + "_hand" + str(i - 1)
+        hand = Hand(self.id + "_damage", Marker.SPHERE, parent, position, [0.5,0.5,0.5], [1, 0, 0], 0)
+        self.hands.append(hand)
+        self.damage = hand
 
     def __call__(self, delta_time): return self.update(delta_time)

@@ -26,17 +26,20 @@ class Hand:
 
         marker = Marker()
         marker.header.frame_id = self.id
-        marker.type = marker.CYLINDER
+        marker.type = self.type
         marker.action = marker.ADD
-        marker.scale.x = self.length
-        marker.scale.y = 0.1
-        marker.scale.z = 0.1
+        marker.scale.x = self.length[0]
+        marker.scale.y = self.length[1]
+        marker.scale.z = self.length[2]
         marker.color.a = 1.0
         marker.color.r = self.color[0]
         marker.color.g = self.color[1]
         marker.color.b = self.color[2]
         marker.pose.orientation.w = 1.0
-        marker.pose.position.x = self.length / 2.0
+        if self.type == Marker.SPHERE:
+            marker.pose.position.x = 0
+        else:
+            marker.pose.position.x = self.length[0] / 2.0
         marker.pose.position.y = 0
         marker.pose.position.z = 0
         self.publisher.publish(marker)
@@ -47,8 +50,9 @@ class Hand:
         self.physic(delta_time);
         self.ros();
 
-    def __init__(self, id, parent, position, length, color, speed):
+    def __init__(self, id, type, parent, position, length, color, speed):
         self.id = id
+        self.type = type
         self.parent = parent
         self.position = position
         self.color = color

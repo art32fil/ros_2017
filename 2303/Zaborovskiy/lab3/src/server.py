@@ -26,14 +26,17 @@ def server():
     listener = tf.TransformListener()
     last_update = rospy.Time.now().to_sec()
 
-    robots["robot0"] = Robot("robot0", [0, 1, 0], 400, [4, 0])
-    robots["robot1"] = Robot("robot1", [1, 0, 0], 400, [-4, 0])
-    robots["robot2"] = Robot("robot2", [1, 0, 0], 400, [0, 4])
-    robots["robot3"] = Robot("robot3", [1, 0, 0], 400, [0, -4])
+    robots["robot0"] = Robot("robot0", [0, 1, 0], 1000, [4, 0])
+    robots["robot1"] = Robot("robot1", [0, 0, 1], 1000, [-4, 0])
+    robots["robot2"] = Robot("robot2", [0, 0, 1], 1000, [0, 4])
+    robots["robot3"] = Robot("robot3", [0, 0, 1], 1000, [0, -4])
 
     rospy.Subscriber('inputs', String, new_input)
 
     R = rospy.Rate(150)
+    print ("Press W A S D to move")
+    print ("Press E to exit")
+
     while not (rospy.is_shutdown() or end):
         delta_time = rospy.Time.now().to_sec() - last_update
 
@@ -43,15 +46,15 @@ def server():
                 for k2, robot2 in robots.items():
                         try:
                             if k != k2:
-                                position, quaternion = listener.lookupTransform("/"+robot1.id, "/"+robot2.id, rospy.Time())
+                                position, quaternion = listener.lookupTransform("/"+robot1.damage.id, "/"+robot2.id, rospy.Time())
                                 distance = math.sqrt(position[0] * position[0] + position[1] * position[1])
-                                if distance < 0.4:
+                                if distance < robot1.damage.length[0] / 2.0:
                                     robot2.destroy()
-                                print(robot1.id, " ", robot2.id, " ",distance)
                         except (tf.LookupException, tf.ConnectivityException, tf.ExtrapolationException):
                             continue
         R.sleep()
         last_update = rospy.Time.now().to_sec()
+
 
 if __name__ == '__main__':
     try:
