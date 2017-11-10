@@ -1,11 +1,18 @@
 <launch>
-<!-- set up the cosys -->
-
-
 <!-- start rviz -->
   <node pkg="rviz" type="rviz" name="my_rviz" 
     args="-d $(find lab3)/src/level.rviz -f map"/>
 
   <node name="input" pkg="lab3" type="input.py" output="screen"/>
   <node name="server" pkg="lab3" type="server.py" output="screen"/>
+
+    <node name="ai1" pkg="lab3" type="ai.py" output="screen">
+	<param name="id" value="robot1" />
+    </node>
+    <node name="ai2" pkg="lab3" type="ai.py">
+	<param name="id" value="robot2" />
+    </node>
+    <node name="ai3" pkg="lab3" type="ai.py">
+	<param name="id" value="robot3" />
+    </node>
 </launch>

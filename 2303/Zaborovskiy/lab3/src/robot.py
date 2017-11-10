@@ -27,6 +27,7 @@ class Robot:
         self.position[0] += math.cos(self.rotation) * force
         self.position[1] += math.sin(self.rotation) * force
 
+        #print self.id, " ", self.position[0], " ", self.position[1]
         self.acceleration[0] = 0
         self.acceleration[1] = 0
 

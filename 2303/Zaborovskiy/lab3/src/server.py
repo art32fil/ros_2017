@@ -34,6 +34,8 @@ def server():
     rospy.Subscriber('inputs', String, new_input)
 
     R = rospy.Rate(150)
+
+    rospy.sleep(5)
     print ("Press W A S D to move")
     print ("Press E to exit")
 
