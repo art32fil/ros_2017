@@ -1,3 +1,3 @@
-Press W A S D to move
-Press E to exit
+Touch W A S D to move
+Touch E to exit
 (in console)
