@@ -1,0 +1,30 @@
+digraph G {
+"robot2_hand2" -> "robot2_hand3"[label="Broadcaster: /server\nAverage rate: 69.419 Hz\nMost recent transform: 1510347435.753 ( 0.003 sec old)\nBuffer length: 4.984 sec\n"];
+"robot2_hand1" -> "robot2_hand2"[label="Broadcaster: /server\nAverage rate: 69.395 Hz\nMost recent transform: 1510347435.752 ( 0.004 sec old)\nBuffer length: 4.972 sec\n"];
+"robot2_hand3" -> "robot2_damage"[label="Broadcaster: /server\nAverage rate: 69.417 Hz\nMost recent transform: 1510347435.753 ( 0.003 sec old)\nBuffer length: 4.984 sec\n"];
+"map" -> "robot3"[label="Broadcaster: /server\nAverage rate: 69.414 Hz\nMost recent transform: 1510347435.754 ( 0.002 sec old)\nBuffer length: 4.985 sec\n"];
+"robot3" -> "robot3_hand0"[label="Broadcaster: /server\nAverage rate: 69.412 Hz\nMost recent transform: 1510347435.755 ( 0.001 sec old)\nBuffer length: 4.985 sec\n"];
+"robot3_hand0" -> "robot3_hand1"[label="Broadcaster: /server\nAverage rate: 69.412 Hz\nMost recent transform: 1510347435.755 ( 0.001 sec old)\nBuffer length: 4.985 sec\n"];
+"robot3_hand1" -> "robot3_hand2"[label="Broadcaster: /server\nAverage rate: 69.437 Hz\nMost recent transform: 1510347435.740 ( 0.017 sec old)\nBuffer length: 4.969 sec\n"];
+"robot3_hand2" -> "robot3_hand3"[label="Broadcaster: /server\nAverage rate: 69.435 Hz\nMost recent transform: 1510347435.740 ( 0.016 sec old)\nBuffer length: 4.969 sec\n"];
+"robot3_hand3" -> "robot3_damage"[label="Broadcaster: /server\nAverage rate: 69.432 Hz\nMost recent transform: 1510347435.741 ( 0.015 sec old)\nBuffer length: 4.969 sec\n"];
+"map" -> "robot0"[label="Broadcaster: /server\nAverage rate: 69.430 Hz\nMost recent transform: 1510347435.742 ( 0.014 sec old)\nBuffer length: 4.969 sec\n"];
+"robot0" -> "robot0_hand0"[label="Broadcaster: /server\nAverage rate: 69.431 Hz\nMost recent transform: 1510347435.742 ( 0.014 sec old)\nBuffer length: 4.969 sec\n"];
+"robot0_hand0" -> "robot0_hand1"[label="Broadcaster: /server\nAverage rate: 69.430 Hz\nMost recent transform: 1510347435.743 ( 0.014 sec old)\nBuffer length: 4.969 sec\n"];
+"robot0_hand1" -> "robot0_hand2"[label="Broadcaster: /server\nAverage rate: 69.427 Hz\nMost recent transform: 1510347435.743 ( 0.013 sec old)\nBuffer length: 4.969 sec\n"];
+"robot0_hand2" -> "robot0_hand3"[label="Broadcaster: /server\nAverage rate: 69.413 Hz\nMost recent transform: 1510347435.745 ( 0.011 sec old)\nBuffer length: 4.970 sec\n"];
+"robot0_hand3" -> "robot0_damage"[label="Broadcaster: /server\nAverage rate: 69.411 Hz\nMost recent transform: 1510347435.745 ( 0.011 sec old)\nBuffer length: 4.970 sec\n"];
+"map" -> "robot1"[label="Broadcaster: /server\nAverage rate: 69.411 Hz\nMost recent transform: 1510347435.746 ( 0.010 sec old)\nBuffer length: 4.970 sec\n"];
+"robot1" -> "robot1_hand0"[label="Broadcaster: /server\nAverage rate: 69.410 Hz\nMost recent transform: 1510347435.747 ( 0.010 sec old)\nBuffer length: 4.970 sec\n"];
+"robot1_hand0" -> "robot1_hand1"[label="Broadcaster: /server\nAverage rate: 69.417 Hz\nMost recent transform: 1510347435.747 ( 0.009 sec old)\nBuffer length: 4.970 sec\n"];
+"robot1_hand1" -> "robot1_hand2"[label="Broadcaster: /server\nAverage rate: 69.411 Hz\nMost recent transform: 1510347435.748 ( 0.008 sec old)\nBuffer length: 4.970 sec\n"];
+"robot1_hand2" -> "robot1_hand3"[label="Broadcaster: /server\nAverage rate: 69.408 Hz\nMost recent transform: 1510347435.749 ( 0.008 sec old)\nBuffer length: 4.971 sec\n"];
+"robot1_hand3" -> "robot1_damage"[label="Broadcaster: /server\nAverage rate: 69.409 Hz\nMost recent transform: 1510347435.749 ( 0.007 sec old)\nBuffer length: 4.971 sec\n"];
+"map" -> "robot2"[label="Broadcaster: /server\nAverage rate: 69.409 Hz\nMost recent transform: 1510347435.750 ( 0.006 sec old)\nBuffer length: 4.971 sec\n"];
+"robot2" -> "robot2_hand0"[label="Broadcaster: /server\nAverage rate: 69.406 Hz\nMost recent transform: 1510347435.751 ( 0.006 sec old)\nBuffer length: 4.971 sec\n"];
+"robot2_hand0" -> "robot2_hand1"[label="Broadcaster: /server\nAverage rate: 69.402 Hz\nMost recent transform: 1510347435.751 ( 0.005 sec old)\nBuffer length: 4.971 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1510347435.756"[ shape=plaintext ] ;
+ }->"map";
+}

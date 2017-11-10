@@ -36,8 +36,8 @@ def server():
     R = rospy.Rate(150)
 
     rospy.sleep(5)
-    print ("Press W A S D to move")
-    print ("Press E to exit")
+    print ("Touch W A S D to move")
+    print ("Touch E to exit")
 
     while not (rospy.is_shutdown() or end):
         delta_time = rospy.Time.now().to_sec() - last_update
