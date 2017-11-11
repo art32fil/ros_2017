@@ -22,27 +22,41 @@ void poseCallback(const turtlesim::PoseConstPtr& msg){
   transform.setOrigin( tf::Vector3(msg->x, msg->y, 0.0) );
   transform.setRotation(q);
   br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "Player"+name));
-  tf::Transform knee1;
-  knee1.setOrigin( tf::Vector3(1.5, 0, 0.0) );
-  q.setRPY(0, 0, -coefficient2);
-  knee1.setRotation(q);
-  br.sendTransform(tf::StampedTransform(knee1, ros::Time::now(), "Player"+name, name+"1"));
-  tf::Transform knee2;
-  knee2.setOrigin( tf::Vector3(0.5, 0, 0.0) );
-  q.setRPY(0, 0, coefficient3);
-  knee2.setRotation(q);
-  br.sendTransform(tf::StampedTransform(knee2, ros::Time::now(), name+"1", name+"2"));
+  if(name == "A")
+  {
+      tf::Transform knee1;
+      knee1.setOrigin( tf::Vector3(1.5, 0, 0.0) );
+      q.setRPY(0, 0, -coefficient2);
+      knee1.setRotation(q);
+      br.sendTransform(tf::StampedTransform(knee1, ros::Time::now(), "Player"+name, name+"1"));
+      tf::Transform knee2;
+      knee2.setOrigin( tf::Vector3(0.5, 0, 0.0) );
+      q.setRPY(0, 0, coefficient3);
+      knee2.setRotation(q);
+      br.sendTransform(tf::StampedTransform(knee2, ros::Time::now(), name+"1", name+"2"));
+  }
+  else
+  {
+      tf::Transform knee1;
+      knee1.setOrigin( tf::Vector3(1.5, 0, 0.0) );
+      q.setRPY(0, 0, coefficient2);
+      knee1.setRotation(q);
+      br.sendTransform(tf::StampedTransform(knee1, ros::Time::now(), "Player"+name, name+"1"));
+      tf::Transform knee2;
+      knee2.setOrigin( tf::Vector3(0.5, 0, 0.0) );
+      q.setRPY(0, 0, -coefficient3);
+      knee2.setRotation(q);
+      br.sendTransform(tf::StampedTransform(knee2, ros::Time::now(), name+"1", name+"2"));
+  }
   tf::Transform knee3;
   knee3.setOrigin( tf::Vector3(1.0, 0, 0.0) );
   q.setRPY(0, 0, 0);
   knee3.setRotation(q);
   br.sendTransform(tf::StampedTransform(knee3, ros::Time::now(), name+"2", name+"3"));
 
-
   coefficient1+=newValue1;
   coefficient2+=newValue2;
   coefficient3+=newValue3;
-
 }
 
 int main(int argc, char** argv){

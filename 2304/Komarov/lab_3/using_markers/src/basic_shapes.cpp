@@ -3,7 +3,6 @@
 #include <tf/transform_broadcaster.h>
 #include <tf/transform_listener.h>
 #include <turtlesim/Pose.h>
-//#include <fstream>
 #include <geometry_msgs/PointStamped.h>
 
 
@@ -53,17 +52,17 @@ int main( int argc, char** argv )
       p.point.x+=1;
       marker.points.push_back(p.point);
       marker.header.frame_id = "/world";
-    marker.pose.position.x = 0;
-    marker.pose.position.y = 0;
-    marker.pose.position.z = 0;
-    marker.pose.orientation.x = 0.0;
-    marker.pose.orientation.y = 0.0;
-    marker.pose.orientation.z = 0.0;
-    marker.pose.orientation.w = 1.0;
+      marker.pose.position.x = 0;
+      marker.pose.position.y = 0;
+      marker.pose.position.z = 0;
+      marker.pose.orientation.x = 0.0;
+      marker.pose.orientation.y = 0.0;
+      marker.pose.orientation.z = 0.0;
+      marker.pose.orientation.w = 1.0;
 
-    marker.scale.x = 1.0;
-    marker.scale.y = 1.0;
-    marker.scale.z = 1.0;
+      marker.scale.x = 1.0;
+      marker.scale.y = 1.0;
+      marker.scale.z = 1.0;
       marker.header.stamp = ros::Time::now();
       chatter.publish(marker);
 

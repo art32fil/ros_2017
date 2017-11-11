@@ -20,15 +20,28 @@ int main(int argc, char **argv)
   keypad(stdscr, TRUE);
   noecho();
   timeout(25);
-printw("$ - is you, # - is exit\nManipulating with arrows\nGood luck, have fun\nPress 'Backspace' for exit n\n");
+  printw("$ - is you, # - is exit\nManipulating with arrows\nGood luck, have fun\nPress 'Backspace' for exit n\n");
+  double bx = -3;
+  double by = -3;
+  double randbx = 0;
+  double randby = 0;
+  turtlesim::Pose msg;
+  turtlesim::Pose bmsg;
+  bmsg.x = bx;
+  bmsg.y = by;
+  msg.x = x;
+  msg.y = y;
+  int waitsec = 30;
+  int i = 0;
   while ((ch = getch()) !=  KEY_BACKSPACE)
   {
-    turtlesim::Pose msg;
-    msg.x = x;
-    msg.y = y;
-
+    if (waitsec <= i) {
+        i = 0;
+        randbx = (((double) rand() / (RAND_MAX)) - 0.5)/10;
+        randby = (((double) rand() / (RAND_MAX)) - 0.5)/10;
+    }
     switch(ch)
-      {
+    {
         case KEY_UP:
           x -= 0.1;
           msg.x = x;
@@ -45,12 +58,16 @@ printw("$ - is you, # - is exit\nManipulating with arrows\nGood luck, have fun\n
           y += 0.1;
           msg.y = y;
           break;
-      }
+    }
     publisherA.publish(msg);
-    msg.x = -4;
-    msg.y = -4;
-    publisherB.publish(msg);
+    bx += randbx;
+    bmsg.x = bx;
+    by += randby;
+    bmsg.y = by;
+    publisherB.publish(bmsg);
+
     ros::spinOnce();
+    i++;
   }
 
   refresh();
