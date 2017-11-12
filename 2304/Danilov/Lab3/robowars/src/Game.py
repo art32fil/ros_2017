@@ -18,8 +18,6 @@ class Game:
 
         self.robots["robot0"] = Robot("robot0", [0, 1, 0], 4000, [4, 0])
         self.robots["robot1"] = Robot("robot1", [0, 0, 1], 4000, [-4, 0])
-        self.robots["robot2"] = Robot("robot2", [0, 0, 1], 4000, [0, 4])
-        self.robots["robot3"] = Robot("robot3", [0, 0, 1], 4000, [0, -4])
 
         R = rospy.Rate(150)
 
@@ -30,7 +28,7 @@ class Game:
             delta_time = rospy.Time.now().to_sec() - last_update
 
             for k, robot1 in self.robots.items():
-                if robot1.isLife:
+                if robot1.alive:
                     robot1(delta_time)
                     for k2, robot2 in self.robots.items():
                             try:
@@ -56,8 +54,7 @@ class Game:
                 self.robots[id].move(int(x), int(y))
         else:
             self.shutdown = True
-            print "Shutdown message"
-            rospy.signal_shutdown("FAILED")
+            rospy.signal_shutdown("ROSPy Shutdown")
        
 if __name__ == '__main__':
     try:

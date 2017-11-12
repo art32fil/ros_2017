@@ -5,7 +5,7 @@ import math
 import random
 from visualization_msgs.msg import Marker
 
-class Hand:
+class Weapon:
 
     def __init__(self, id, type, parent, position, length, color, speed):
         self.id = id
@@ -17,16 +17,16 @@ class Hand:
         self.length = length
         self.rotation = 0.0
         self.publisher = rospy.Publisher(self.id, Marker, queue_size=10)
-        self.ros()
+        self.render()
 
-    def physic(self, delta_time):
+    def do_physics(self, delta_time):
         self.rotation += random.random() * self.speed * 1000 * delta_time
 
         if self.rotation > 360:
-            self.rotation -= 360
+            self.rotation %= 360
 
         if self.rotation < 0:
-            self.rotation += 360
+            self.rotation %= 360
 
     
 
@@ -37,7 +37,7 @@ class Hand:
         self.publisher.publish(marker)
 
 
-    def ros(self):
+    def render(self):
         br = tf.TransformBroadcaster()
         br.sendTransform(self.position,
                          tf.transformations.quaternion_from_euler(0, 0, math.radians(self.rotation)),
@@ -68,7 +68,7 @@ class Hand:
 
 
     def update(self, delta_time):
-        self.physic(delta_time);
-        self.ros();
+        self.do_physics(delta_time);
+        self.render();
 
     def __call__(self, delta_time): return self.update(delta_time)
