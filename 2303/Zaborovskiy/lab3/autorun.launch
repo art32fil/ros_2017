@@ -1,11 +1,14 @@
 <launch>
 <!-- start rviz -->
-  <node pkg="rviz" type="rviz" name="my_rviz" 
+    <node pkg="rviz" type="rviz" name="my_rviz" 
     args="-d $(find lab3)/src/level.rviz -f map"/>
 
-  <node name="input" pkg="lab3" type="input.py" output="screen" required="true"/>
-  <node name="server" pkg="lab3" type="server.py" output="screen" required="true"/>
-
+    <node name="server" pkg="lab3" type="server.py" output="screen" required="true"/>
+	
+    <node name="input" pkg="lab3" type="input.py" output="screen" required="true">
+	<param name="id" value="robot0" />
+    </node>
+	
     <node name="ai1" pkg="lab3" type="ai.py" output="screen">
 	<param name="id" value="robot1" />
     </node>
