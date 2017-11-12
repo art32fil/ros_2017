@@ -27,7 +27,9 @@ def io():
         # Exit
         publisher.publish("e")
         end = True
-
+    elif key == 'c' or key == 'C':
+        # Cheatcode
+        publisher.publish(id + " iddqd")
 
 def input():
     rospy.init_node('input')
