@@ -1,0 +1,12 @@
+<launch>
+	<node name="RobotA" pkg="battlerobots" type="bot" output="screen" required="true">
+		<param name="name" type="str" value="A" />
+		<remap from="pose" to="posBotA"/>
+	</node>
+	<node name="RobotB" pkg="battlerobots" type="bot" output="screen" required="true">
+		<param name="name" type="str" value="B" />
+		<remap from="pose" to="posBotB"/>
+	</node>
+    <node name="arena" pkg="battlerobots" type="arena" output="screen" required="true"></node>
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find battlerobots)/rvizconfig.rviz"/>
+</launch>
