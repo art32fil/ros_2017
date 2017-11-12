@@ -15,12 +15,12 @@ def new_input(data):
         id = arr[0]
         if id in robots:
             if arr[1] == "iddqd":
-                    robots[id].isLife = True
-                    robots[id].speed = 10000
-                else:
-                    x = arr[1]
-                    y = arr[2]
-                    robots[id].move(int(x), int(y))
+                robots[id].isLife = True
+                robots[id].speed = 10000
+            else:
+                x = arr[1]
+                y = arr[2]
+                robots[id].move(int(x), int(y))
     else:
         print "Shotdown message"
         rospy.signal_shutdown("FAILED")
