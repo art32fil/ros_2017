@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import rospy
-from pynput.keyboard import Key, Listener, KeyCode
+from pynput.keyboard import Key, Listener, KeyCode, Controller as Kb
 
 from controller import Controller
 
@@ -40,3 +40,9 @@ class ButtonController(Controller):
 
         with Listener(on_press=__on_press, on_release=__on_release) as listener:
             listener.join()
+
+    def stop(self):
+        keyboard = Kb()
+
+        keyboard.press(self.KEY_Q)
+        keyboard.release(self.KEY_Q)

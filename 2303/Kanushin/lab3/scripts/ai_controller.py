@@ -37,3 +37,4 @@ class AiController(Controller):
 
     def stop(self):
         self.running = False
+        self.robot.delete()
