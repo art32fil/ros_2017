@@ -40,10 +40,16 @@ class Robot:
         marker.scale.y = 0.2
         marker.scale.z = 0.2
         marker.color.a = 1.0
-        marker.color.r = self.color[0]
-        marker.color.g = self.color[1]
-        marker.color.b = self.color[2]
-
+        
+        if self.isLife
+            marker.color.r = self.color[0]
+            marker.color.g = self.color[1]
+            marker.color.b = self.color[2]
+        else:
+            marker.color.r = 1
+            marker.color.g = 1
+            marker.color.b = 1
+            
         marker.pose.orientation.w = 1
 
         marker.pose.position.x = 0
