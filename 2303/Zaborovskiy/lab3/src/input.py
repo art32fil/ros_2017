@@ -36,7 +36,10 @@ def input():
 
     global publisher
     publisher = rospy.Publisher('inputs', String, queue_size=20)
-
+    
+    global id
+    id = rospy.get_param('~id')
+    
     rospy.sleep(5)
     print ("Touch W A S D to move")
     print ("Touch C to back again")
