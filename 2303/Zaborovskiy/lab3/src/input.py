@@ -37,6 +37,11 @@ def input():
     global publisher
     publisher = rospy.Publisher('inputs', String, queue_size=20)
 
+    rospy.sleep(5)
+    print ("Touch W A S D to move")
+    print ("Touch C to back again")
+    print ("Touch E to exit")
+    
     while not (rospy.is_shutdown() or end):
         io()
         rospy.sleep(0.01)
