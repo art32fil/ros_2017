@@ -11,23 +11,23 @@ end = False
 def io():
     global end
     key = getch()
-    if key == 'a' or key == 'A':
+    if key == 'a' or key == 'A' or key == 'Ф' or key == 'ф':
         # Left
         publisher.publish(id + " -1 0")
-    elif key == 'd' or key == 'D':
+    elif key == 'd' or key == 'D' or key == 'В' or key == 'в':
         # Right
         publisher.publish(id + " 1 0")
-    elif key == 'w' or key == 'W':
+    elif key == 'w' or key == 'W' or key == 'Ц' or key == 'ц':
         # Up
         publisher.publish(id + " 0 1")
-    elif key == 's' or key == 'S':
+    elif key == 's' or key == 'S' or key == 'Ы' or key == 'ы':
         # Down
         publisher.publish(id + " 0 -1")
-    elif key == 'e' or key == 'E':
+    elif key == 'e' or key == 'E' or key == 'У' or key == 'у':
         # Exit
         publisher.publish("e")
         end = True
-    elif key == 'c' or key == 'C':
+    elif key == 'c' or key == 'C' or key == 'С' or key == 'с':
         # Cheatcode
         publisher.publish(id + " iddqd")
 
