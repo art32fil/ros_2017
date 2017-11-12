@@ -20,7 +20,7 @@ class Nunchuck:
         self.ros()
 
     def physic(self, delta_time):
-        self.rotation = self.rotation + 1488 * self.speed * random.random()  * delta_time
+        self.rotation = self.rotation + 1488 * self.speed * random.random() * delta_time
 
         if self.rotation < 0:
             self.rotation = self.rotation + 360
@@ -46,7 +46,7 @@ class Nunchuck:
         marker.color.b = self.color[2]
         marker.scale.x = self.length[0]
         marker.scale.y = self.length[1]
-        marker.scale.z = self.length[2]
+        marker.scale.z = self.length[1]
         marker.pose.orientation.w = 1.0
         if self.type == Marker.SPHERE:
             marker.pose.position.x = 0

@@ -33,13 +33,13 @@ class RoboNinja:
                 parent = self.id
                 position = (0.4, 0, 0)
 
-            nunchuck = Nunchuck(me, Marker.CYLINDER, parent, position, NUNCHUCK_LENGTH, [1,1,1], 22)
+            nunchuck = Nunchuck(me, Marker.CYLINDER, parent, position, NUNCHUCK_LENGTH, [1,1,1], 220)
             self.nunchucks.append(nunchuck)
             i += 1
 
         position = (1, 0, 0)
         parent = self.id + "_hand" + str(i - 1)
-        nunchuck = Nunchuck(self.id + "_damage", Marker.SPHERE, parent, position, [0.5,0.5,0.5], [1, 0, 0], 0)
+        nunchuck = Nunchuck(self.id + "_damage", Marker.ARROW, parent, position, [0.9,0.5,0.1], [0.3, 1, 0.7], 0)
         self.nunchucks.append(nunchuck)
         self.damage = nunchuck
 
