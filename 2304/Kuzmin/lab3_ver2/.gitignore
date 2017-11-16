@@ -1,0 +1,8 @@
+/devel/
+/build/
+/install/
+*~
+*.gv
+*.pdf
+*.user
+*.autosave
