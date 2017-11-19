@@ -1,0 +1,1 @@
+К сожалению не смог разобраться с nteractive_marker_server в rviz 
