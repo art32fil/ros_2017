@@ -1,0 +1,9 @@
+<launch>
+    <node name="input" pkg="robowars" type="PlayerController.py" output="screen" required="true"/>
+    <node name="server" pkg="robowars" type="Game.py" output="screen" required="true"/>
+    <node name="ai1" pkg="robowars" type="AIController.py" output="screen">
+	    <param name="id" value="robot1" />
+    </node>
+    <node pkg="rviz" type="rviz" name="my_rviz" 
+        args="-d $(find robowars)/src/level.rviz -f map"/>
+</launch>
