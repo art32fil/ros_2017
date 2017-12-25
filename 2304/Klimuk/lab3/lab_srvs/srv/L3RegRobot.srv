@@ -1,0 +1,8 @@
+string id
+float32 color_r
+float32 color_g
+float32 color_b
+float32 speed
+float32 position_x
+float32 position_y
+---

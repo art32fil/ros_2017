@@ -1,0 +1,5 @@
+string id 
+---
+float32 player_position_x
+float32 player_position_y
+float32 bot_orientation
