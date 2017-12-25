@@ -1,0 +1,12 @@
+<launch>
+<!-- start rviz -->
+  <node pkg="rviz" type="rviz" name="my_rviz" 
+    args="-d $(find lab3)/src/level.rviz -f map"/>
+
+  <node name="controlls" pkg="lab3" type="Controlls.py" output="screen"/>
+  <node name="arena" pkg="lab3" type="Arena.py" output="screen"/>
+
+    <node name="ninjaai1" pkg="lab3" type="NinjaAi.py" output="screen">
+	<param name="id" value="robot1" />
+    </node>
+</launch>
