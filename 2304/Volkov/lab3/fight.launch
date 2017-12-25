@@ -1,0 +1,13 @@
+<launch>
+<node name="BattlerA" pkg="versus" type="battler" output="screen" required="true">
+<param name="name" type="str" value="A" />
+<remap from="pose" to="poseA"/>
+</node>
+<node name="BattlerB" pkg="versus" type="battler" output="screen" required="true">
+<param name="name" type="str" value="B" />
+<remap from="pose" to="poseB"/>
+</node>
+<node name="restorator" pkg="versus" type="restorator" output="screen" required="true">
+</node>		
+<node pkg="rviz" type="rviz" name="rviz" args="-d $(find versus)/rviz.rviz"/>
+</launch>
