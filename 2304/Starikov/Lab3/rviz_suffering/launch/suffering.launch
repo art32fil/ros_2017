@@ -1,0 +1,44 @@
+<launch>
+	  
+<group ns="group1">
+ <node pkg="turtlesim" type="turtle_teleop_key" name="teleop" output="screen">
+  	<remap from="/group1/turtle1/cmd_vel" to="/player/cmd_vel"/>
+  </node>
+  <node pkg="rviz_suffering" type="player_node" name="body" output="screen"/>
+  <node pkg="rviz_suffering" type="link_node" name="link1" output="screen">
+   <param name="linkName" value="link1"/>
+   <param name="prevLinkName" value="body"/>
+	 <param name="owner" value="player"/>
+  </node>
+  <node pkg="rviz_suffering" type="link_node" name="link2" output="screen">
+   <param name="linkName" value="link2"/>
+   <param name="prevLinkName" value="link1"/>
+	 <param name="owner" value="player"/>
+  </node>
+  <node pkg="rviz_suffering" type="link_node" name="link3" output="screen">
+   <param name="linkName" value="link3"/>
+   <param name="prevLinkName" value="link2"/>
+	 <param name="owner" value="player"/>
+  </node>
+</group>
+<group ns="group2">
+  <node pkg="rviz_suffering" type="enemy_node" name="body" output="screen"/>
+  <node pkg="rviz_suffering" type="link_node" name="link1" output="screen">
+   <param name="linkName" value="link1"/>
+   <param name="prevLinkName" value="body"/>
+   <param name="owner" value="enemy"/>
+  </node>
+  <node pkg="rviz_suffering" type="link_node" name="link2" output="screen">
+   <param name="linkName" value="link2"/>
+   <param name="prevLinkName" value="link1"/>
+   <param name="owner" value="enemy"/>
+  </node>
+  <node pkg="rviz_suffering" type="link_node" name="link3" output="screen">
+   <param name="linkName" value="link3"/>
+   <param name="prevLinkName" value="link2"/>
+   <param name="owner" value="enemy"/>
+  </node>
+ </group>
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find rviz_suffering)/rvizConf.rviz"/>
+
+</launch>
