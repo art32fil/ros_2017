@@ -1,0 +1,12 @@
+<launch>
+	  <node name="RobotA" pkg="robofight" type="robot" output="screen" required="true">
+			<param name="name" type="str" value="A" />
+			<remap from="pose" to="poseA"/>
+		</node>
+		<node name="RobotB" pkg="robofight" type="robot" output="screen" required="true">
+			<param name="name" type="str" value="B" />
+			<remap from="pose" to="poseB"/>
+		</node>
+		<node name="arbiter" pkg="robofight" type="arbiter" output="screen" required="true"></node>		
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find robofight)/rviz.rviz"/>
+</launch>
